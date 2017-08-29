@@ -4,8 +4,8 @@ package info.baethge.lk1718.listen;
  * doppelt verkettete Liste, die von der einfach verketteten Liste erbt
  */
 public class ListeDoppeltVerkettet extends ListeEinfachVerkettet {
-	public ListeDoppeltVerkettet() { super();	}
 
+	public ListeDoppeltVerkettet() { super();	}
 	public ListeDoppeltVerkettet(ElementDoppeltVerkettet element) {
 		super(element);
 	}
