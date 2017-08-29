@@ -4,7 +4,7 @@ package info.baethge.lk1718.listen;
  * einfach verkettete Liste aus Objekten vom Typ ElementEinfachVerkettet
  */
 public class ListeEinfachVerkettet {
-	private ElementEinfachVerkettet erstes;
+	protected ElementEinfachVerkettet erstes;
 
 	/**
 	 * Konstruktoren
