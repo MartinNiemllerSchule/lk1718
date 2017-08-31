@@ -39,6 +39,31 @@ public class ListeDoppeltVerkettet extends ListeEinfachVerkettet {
 	}
 
 	/**
+	 * fügt das Element an der richtigen Stelle ein
+	 * die Sortierordnung wird in ElementEinfachVerkettet festgelegt (hier nach name)
+	 *
+	 * @param element - zu suchendes Element
+	 */
+	public void sortiertEinfügen(ElementDoppeltVerkettet element) {
+		if (erstes == null) {
+			erstes = element;
+		} else if (erstes.compareTo(element) > 0) {
+			((ElementDoppeltVerkettet)erstes).zurück = element;
+			element.vor = (ElementDoppeltVerkettet)erstes;
+			erstes = element;
+		}	else {
+			ElementDoppeltVerkettet aktuell = (ElementDoppeltVerkettet) erstes;
+			while (aktuell.vor != null && aktuell.vor.compareTo(element) < 0) aktuell = (ElementDoppeltVerkettet) aktuell.vor;
+			if (aktuell.vor == null) { // anhängen
+				aktuell.vor = element;
+				element.zurück = aktuell;
+			} else {
+				aktuell.einfügenNächstes(element);
+			}
+		}
+	}
+
+	/**
 	 * lösche das Element mit diesem Namen
 	 * @param name
 	 */

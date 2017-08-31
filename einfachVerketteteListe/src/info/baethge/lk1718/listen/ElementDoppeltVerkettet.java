@@ -45,4 +45,49 @@ public class ElementDoppeltVerkettet extends ElementEinfachVerkettet {
 		vor = element;
 	}
 
+
+	/**
+	 * geht durch die Liste soundsoviel Elemente nach links oder rechts
+	 * @param anzahlSchritte
+	 * @return
+	 */
+	protected ElementDoppeltVerkettet gehe(int anzahlSchritte) {
+		ElementDoppeltVerkettet aktuell = this;
+		int aS = anzahlSchritte;
+		if (aS < 0) {
+			while (aS < 0 && aktuell.zurück != null) {
+				aktuell = aktuell.zurück;
+				aS++;
+			}
+		} else {
+			while (aS > 0 && aktuell.vor != null) { aktuell = (ElementDoppeltVerkettet) aktuell.vor; aS--; }
+		}
+		if (aS == 0) {
+			return aktuell;
+		} else {
+			throw new IndexOutOfBoundsException("Die Grenzen der Liste sollten überschritten werden");
+		}
+	}
+	protected ElementDoppeltVerkettet binSuche (int suchBegriff, int linksVorher, int rechtsVorher) {
+		if (name == suchBegriff) {
+			return this;
+		} else {
+			int anzSchritte;
+			ElementDoppeltVerkettet aktuell;
+			if (suchBegriff < name) {
+				if (linksVorher < -1) {
+					anzSchritte = linksVorher / 2;
+					aktuell = gehe(anzSchritte);
+					return aktuell.binSuche(suchBegriff, linksVorher - anzSchritte, -anzSchritte);
+				} else return null;
+			} else {
+				if (rechtsVorher > 1) {
+					anzSchritte = rechtsVorher / 2;
+					aktuell = gehe(anzSchritte);
+					return aktuell.binSuche(suchBegriff, -anzSchritte, rechtsVorher - anzSchritte);
+				} else return null;
+			}
+		}
+	}
+
 }

@@ -5,7 +5,7 @@ package info.baethge.lk1718.listen;
  * Funktionsweise von einfach verketteten Listen
  * ein Element ist Teil der Liste
  */
-public class ElementEinfachVerkettet {
+public class ElementEinfachVerkettet implements Comparable<ElementEinfachVerkettet> {
 	protected int name;
 	protected ElementEinfachVerkettet vor;
 
@@ -85,5 +85,10 @@ public class ElementEinfachVerkettet {
 			ergebnis += " " + akt.toString();
 		}
 		return ergebnis;
+	}
+
+	@Override
+	public int compareTo(ElementEinfachVerkettet elementEinfachVerkettet) {
+		return ((Integer)name).compareTo(elementEinfachVerkettet.name);
 	}
 }
